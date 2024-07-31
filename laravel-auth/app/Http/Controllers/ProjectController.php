@@ -13,7 +13,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('projects.index', compact('projects'));
+        return view('portfolio.index', compact('projects'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('portfolio.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class ProjectController extends Controller
         $newProject->technologies = $data['technologies'];
         $newProject->save();
 
-        return redirect()->route('projects.show', $newProject);
+        return redirect()->route('portfolio.show', $newProject);
     }
 
     /**
@@ -53,7 +53,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        return view('portfolio.show', compact('project'));
     }
 
     /**
@@ -61,7 +61,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        return view('portfolio.edit', compact('project'));
     }
 
     /**
@@ -79,7 +79,7 @@ class ProjectController extends Controller
 
         $project->update($data);
 
-        return redirect()->route('projects.show', $project);
+        return redirect()->route('portfolio.show', $project);
     }
 
     /**
@@ -88,7 +88,7 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('projects.index');
+        return redirect()->route('portfolio.index');
     }
 }
 

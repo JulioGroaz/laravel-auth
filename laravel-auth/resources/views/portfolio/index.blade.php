@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12 text-center p-5">
             <h1>Projects</h1>
-            <a href="{{route('projects.create')}}" class="btn btn-primary">Add New Project</a>
+            <a href="{{route('portfolio.create')}}" class="btn btn-primary">Add New Project</a>
         </div>
     </div>
     <div class="row">
@@ -16,9 +16,9 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $project->title }}</h5>
                     <p class="card-text">{{ Str::limit($project->description, 100) }}</p>
-                    <a href="{{route('projects.show', $project)}}" class="btn btn-primary">Project Details</a>
-                    <a href="{{route('projects.edit', $project)}}" class="btn btn-success">Edit</a>
-                    <form action="{{route('projects.destroy', $project)}}" method="POST" class="d-inline-block">
+                    <a href="{{route('portfolio.show', $project)}}" class="btn btn-primary">Project Details</a>
+                    <a href="{{route('portfolio.edit', $project)}}" class="btn btn-success">Edit</a>
+                    <form action="{{route('portfolio.destroy', $project)}}" method="POST" class="d-inline-block">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-warning">Delete</button>
