@@ -1,22 +1,18 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// Rotta per la home page
+Route::get('/', [ProjectController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Rotte per i progetti
+Route::get('/projects', [ProjectController::class, 'index'])->name('portfolio.index');
+Route::post('/projects', [ProjectController::class, 'store'])->name('portfolio.store');
+Route::get('/projects/create', [ProjectController::class, 'create'])->name('portfolio.create');
+Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('portfolio.show');
+Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('portfolio.edit');
+Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('portfolio.update');
+Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('portfolio.destroy');
